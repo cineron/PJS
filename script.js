@@ -1,7 +1,9 @@
-// V7 Requirements
-// - There should be a "Display todos" button and .toggleAll button
-// - clicking "display todos" should run .displayTodos
-// - clicking "toggle all" should run .toggleAll
+// V8 Requirements
+// - It should have working controls for .addTodo
+// - It should have working controls for .changeTodo
+// - It should have working controls for .deleteTodo
+// - It should have working controls for .toggleTodo
+
 
 var todoList = {
 	todos: [],
@@ -72,5 +74,10 @@ addTodo: function(todoText) {
 
 var handlers = {
 	displayTodos: function(){todoList.displayTodos();},
-	toggleAll: () => todoList.toggleAll()
-}
+	toggleAll: () => todoList.toggleAll(),
+	addTodo: () => {
+		const addTodoTextInpout = document.getElementById("addTodoText");
+		todoList.addTodo(addTodoTextInpout.value);
+		addTodoTextInpout.value = "";
+	}
+};
