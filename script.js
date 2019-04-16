@@ -81,3 +81,10 @@ displayTodosButton.addEventListener("click", function(){
 var toggleAllButton = document.getElementById("toggleAllBtn");
 // 2. run toggleAll when button is clicked
 toggleAllButton.addEventListener("click", () => todoList.toggleAll());
+
+//refactor to utilize onclick in html
+
+var handlers = {
+	displayTodos: function(){todoList.displayTodos();},
+	toggleAll: () => todoList.toggleAll()
+}
