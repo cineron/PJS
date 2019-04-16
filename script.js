@@ -70,20 +70,6 @@ addTodo: function(todoText) {
 	}
 };
 
-// 1. Accesss the "display todos" button
-var displayTodosButton = document.getElementById("displayTodosBtn");
-// 2. run .displayTodos when the button is clicked
-displayTodosButton.addEventListener("click", function(){
-	todoList.displayTodos();
-});
-
-// 1. access "toggle all" button
-var toggleAllButton = document.getElementById("toggleAllBtn");
-// 2. run toggleAll when button is clicked
-toggleAllButton.addEventListener("click", () => todoList.toggleAll());
-
-//refactor to utilize onclick in html
-
 var handlers = {
 	displayTodos: function(){todoList.displayTodos();},
 	toggleAll: () => todoList.toggleAll()
