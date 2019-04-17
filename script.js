@@ -23,7 +23,7 @@ var todoList = {
 			}
 		}
 	},
-addTodo: function(todoText) {
+	addTodo: function(todoText) {
 		this.todos.push({
 			todoText: todoText,
 			completed: false
@@ -74,7 +74,6 @@ addTodo: function(todoText) {
 
 var handlers = {
 	displayTodos: function(){todoList.displayTodos();},
-	toggleAll: () => todoList.toggleAll(),
 	addTodo: () => {
 		const addTodoTextInpout = document.getElementById("addTodoText");
 		todoList.addTodo(addTodoTextInpout.value);
@@ -91,5 +90,11 @@ var handlers = {
 		const deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
 		todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
 		deleteTodoPositionInput.value = "";
-	}
+	},
+	toggleCompleted: () => {
+		const toggleTodoPositionInput = document.getElementById("toggleTodoPositionInput");
+		todoList.toggleCompleted(toggleTodoPositionInput.valueAsNumber);
+		toggleTodoPositionInput.value = "";
+	},
+	toggleAll: () => todoList.toggleAll()
 };
