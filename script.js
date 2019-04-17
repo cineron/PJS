@@ -1,8 +1,7 @@
-// V8 Requirements
-// - It should have working controls for .addTodo
-// - It should have working controls for .changeTodo
-// - It should have working controls for .deleteTodo
-// - It should have working controls for .toggleTodo
+// V9 Requirements
+// - There should an li for every todo
+// - Each li should contain .todoText
+// - Each li should show whether completed
 
 
 var todoList = {
@@ -97,4 +96,15 @@ var handlers = {
 		toggleTodoPositionInput.value = "";
 	},
 	toggleAll: () => todoList.toggleAll()
+};
+
+const view = {
+	displayTodos: () => {
+		let todosUl = document.querySelector("ul");
+		todosUl.innerHTML = "";
+		for (let i = 0; i < todoList.todos.length; i++){
+			let todoLi = document.createElement("li");
+			todosUl.appendChild(todoLi);
+		}
+	}
 };
