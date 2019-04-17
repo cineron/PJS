@@ -79,5 +79,17 @@ var handlers = {
 		const addTodoTextInpout = document.getElementById("addTodoText");
 		todoList.addTodo(addTodoTextInpout.value);
 		addTodoTextInpout.value = "";
+	},
+	changeTodo: () => {
+		const changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
+		const changeTodoTextInput = document.getElementById("changeTodoTextInput");
+		todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+		changeTodoPositionInput.value = "";
+		changeTodoTextInput.value = "";
+	},
+	deleteTodo: () => {
+		const deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
+		todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+		deleteTodoPositionInput.value = "";
 	}
 };
