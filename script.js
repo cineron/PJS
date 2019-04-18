@@ -100,10 +100,19 @@ var handlers = {
 
 const view = {
 	displayTodos: () => {
+		// debugger;
 		let todosUl = document.querySelector("ul");
 		todosUl.innerHTML = "";
 		for (let i = 0; i < todoList.todos.length; i++){
 			let todoLi = document.createElement("li");
+			//check for completed
+			if (todoList.todos[i].completed) {
+				todoLi.textContent = `(x) ${todoList.todos[i].todoText}`;
+			} else {
+				todoLi.textContent = `( ) ${todoList.todos[i].todoText}`;
+			}
+
+			// todoLi.textContent = todoList.todos[i].todoText;
 			todosUl.appendChild(todoLi);
 		}
 	}
