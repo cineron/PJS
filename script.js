@@ -1,10 +1,6 @@
-// V10 Requirements
-// - There should be a way to create delete buttons
-// - There should be a delete button for each item
-// - Each li should have an id that has the todo position
-// - Delete buttons should have access to the todo id
-// - Clicking delete should update the todoList todos and the DOM
-
+// V11 Requirements
+// - todoList.toggleAll should use forEach
+// - view.displayTodos should use forEach
 
 var todoList = {
 	todos: [],
@@ -32,22 +28,37 @@ var todoList = {
 	toggleAll: function() {
 		const totalTodos = this.todos.length;
 		let completedTodos = 0;
-		for (let i = 0; i < totalTodos; i++) {
-			if (this.todos[i].completed === true) {
+		// for (let i = 0; i < totalTodos; i++) {
+		// 	if (this.todos[i].completed === true) {
+		// 		completedTodos++;
+		// 	}
+		// }
+
+		//the above forEach method
+		this.todos.forEach((todo) => {
+			if (todo.completed === true){
 				completedTodos++;
 			}
-		}
+		});
+
 		//if everything's true, make everything false
 		if (completedTodos === totalTodos) {
 			//make everything false
-			for (let i = 0; i < totalTodos; i++) {
-				this.todos[i].completed = false;
-			}
+			// for (let i = 0; i < totalTodos; i++) {
+			// 	this.todos[i].completed = false;
+			// }
+			// the above for loop using forEach
+			this.todos.forEach((todo) => {
+				todo.completed = false;
+			});
 			//make everything false
 		} else {
-			for (let i = 0; i < totalTodos; i++) {
-				this.todos[i].completed = true;
-			}
+			// for (let i = 0; i < totalTodos; i++) {
+			// 	this.todos[i].completed = true;
+			// }
+			this.todos.forEach(todo => 
+				todo.completed = true
+			);
 		}
 	}
 };
