@@ -1,7 +1,9 @@
-// V9 Requirements
-// - There should an li for every todo
-// - Each li should contain .todoText
-// - Each li should show whether completed
+// V10 Requirements
+// - There should be a way to create delete buttons
+// - There should be a delete button for each item
+// - Each li should have an id that has the todo position
+// - Delete buttons should have access to the todo id
+// - Clicking delete should update the todoList todos and the DOM
 
 
 var todoList = {
@@ -97,9 +99,19 @@ const view = {
 			} else {
 				todoLi.textContent = `( ) ${todoList.todos[i].todoText}`;
 			}
+			todoLi.id = i;
 
 			// todoLi.textContent = todoList.todos[i].todoText;
+			// below does NOT work with "this."
+			// todoLi.appendChild(this.createDeleteButton());
+			todoLi.appendChild(view.createDeleteButton());
 			todosUl.appendChild(todoLi);
 		}
+	},
+	createDeleteButton: () => {
+		let deleteButton = document.createElement("button");
+		deleteButton.textContent = "Delete";
+		deleteButton.className = "deleteButton"
+		return deleteButton;
 	}
 };
