@@ -28,12 +28,7 @@ var todoList = {
 	toggleAll: function() {
 		const totalTodos = this.todos.length;
 		let completedTodos = 0;
-		// for (let i = 0; i < totalTodos; i++) {
-		// 	if (this.todos[i].completed === true) {
-		// 		completedTodos++;
-		// 	}
-		// }
-
+	
 		//the above forEach method
 		this.todos.forEach((todo) => {
 			if (todo.completed === true){
@@ -41,25 +36,15 @@ var todoList = {
 			}
 		});
 
-		//if everything's true, make everything false
-		if (completedTodos === totalTodos) {
-			//make everything false
-			// for (let i = 0; i < totalTodos; i++) {
-			// 	this.todos[i].completed = false;
-			// }
-			// the above for loop using forEach
-			this.todos.forEach((todo) => {
+		this.todos.forEach(todo => {
+			//if everything's true, make everything false
+			if (completedTodos === totalTodos){
 				todo.completed = false;
-			});
-			//make everything false
-		} else {
-			// for (let i = 0; i < totalTodos; i++) {
-			// 	this.todos[i].completed = true;
-			// }
-			this.todos.forEach(todo => 
-				todo.completed = true
-			);
-		}
+			} else {
+				//make everything false
+				todo.completed = true;
+			}
+		});
 	}
 };
 
@@ -100,22 +85,33 @@ const view = {
 		// debugger;
 		let todosUl = document.querySelector("ul");
 		todosUl.innerHTML = "";
-		for (let i = 0; i < todoList.todos.length; i++){
-			let todoLi = document.createElement("li");
-			//check for completed
-			if (todoList.todos[i].completed) {
-				todoLi.textContent = `(x) ${todoList.todos[i].todoText}`;
-			} else {
-				todoLi.textContent = `( ) ${todoList.todos[i].todoText}`;
-			}
-			todoLi.id = i;
+		// for (let i = 0; i < todoList.todos.length; i++){
+		// 	let todoLi = document.createElement("li");
+		// 	//check for completed
+		// 	if (todoList.todos[i].completed) {
+		// 		todoLi.textContent = `(x) ${todoList.todos[i].todoText}`;
+		// 	} else {
+		// 		todoLi.textContent = `( ) ${todoList.todos[i].todoText}`;
+		// 	}
+		// 	todoLi.id = i;
 
-			// todoLi.textContent = todoList.todos[i].todoText;
-			// below does NOT work with "this."
-			// todoLi.appendChild(this.createDeleteButton());
+		// 	// todoLi.textContent = todoList.todos[i].todoText;
+		// 	// below does NOT work with "this."
+		// 	// todoLi.appendChild(this.createDeleteButton());
+		// 	todoLi.appendChild(view.createDeleteButton());
+		// 	todosUl.appendChild(todoLi);
+		// }
+		todoList.todos.forEach((todo, position) => {
+			let todoLi = document.createElement("li");
+			if (todo.completed){
+				todoLi.textContent = `(x) ${todo.todoText}`;
+			} else {
+				todoLi.textContent = `( ) ${todo.todoText}`;
+			}
+			todoLi.id = position;
 			todoLi.appendChild(view.createDeleteButton());
 			todosUl.appendChild(todoLi);
-		}
+		});
 	},
 	createDeleteButton: () => {
 		let deleteButton = document.createElement("button");
